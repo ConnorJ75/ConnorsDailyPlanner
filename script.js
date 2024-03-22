@@ -1,5 +1,6 @@
 currentDay = document.getElementById("currentDay");
 hourRows = document.getElementsByClassName("row");
+saveButtons = Array.prototype.slice.call( document.getElementsByClassName("btn") );;
 
 function start () {
   currentDay.textContent = getCurrentDate();
@@ -10,6 +11,14 @@ function start () {
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
   //
+
+  saveButtons.forEach(b => {
+    b.addEventListener("click", function(){
+      //console.log(`${b.parentElement.children[0].innerHTML} textArea pressed`);
+      localStorage.setItem(b.parentElement.id, b.parentElement.children[1].value);
+      //console.log(b.parentElement.children[1].value);
+    });
+  });
  
   for (r of hourRows){
     ts = timeStatus(r.firstElementChild.innerHTML);
