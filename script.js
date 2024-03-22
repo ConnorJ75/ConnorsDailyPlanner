@@ -53,8 +53,6 @@ function timeStatus(timeString){
     hour += 12;
   }
 
-  curHour = 12;
-
   if(curHour > hour){
     return -1;
   }
